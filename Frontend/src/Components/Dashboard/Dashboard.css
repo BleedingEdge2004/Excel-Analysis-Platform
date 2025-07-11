@@ -1,0 +1,34 @@
+/* Layout */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #f8fafc;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.dashboard-body {
+  padding: 20px;
+  flex: 1;
+}
+
+.dashboard-body h2 {
+  color: #1e3a8a;
+  font-size: 1.6rem;
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .dashboard-body {
+    padding: 15px;
+  }
+}
