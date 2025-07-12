@@ -1,17 +1,37 @@
 import { useState, useEffect } from "react";
-import {jwtDecode} from "jwt-decode"; // 👈 to decode JWT
+import { jwtDecode } from "jwt-decode"; // 👈 to decode JWT
 import "./Navbar.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Navbar({ onToggleSidebar, isSidebarOpen }) {
   const [showProfile, setShowProfile] = useState(false);
   const [user, setUser] = useState({ name: "", email: "", role: "" });
+  const [message, setMessage] = useState("");
 
-  const handleLogout = () => {
+
+  const handleLogout = (reason = "expired") => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
-    alert("Session expired. Please log in again.");
-    window.location.href = "/";
+
+    if (reason === "expired") {
+      toast.error("Session expired. Please log in again.", {
+        position: "top-right",
+        autoClose: 3000, // 3 seconds
+      });
+    } else if (reason === "manual") {
+      toast.success("You have been logged out successfully.", {
+        position: "top-right",
+        autoClose: 1000,
+      });
+    }
+
+    // Redirect after showing the toast
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 1000); // Wait for toast to finish
   };
+
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -71,6 +91,7 @@ export default function Navbar({ onToggleSidebar, isSidebarOpen }) {
   };
 
   return (
+    <>
     <header className="navbar">
       {/* Sidebar Toggle */}
       <button className="sidebar-toggle" onClick={onToggleSidebar}>
@@ -91,9 +112,11 @@ export default function Navbar({ onToggleSidebar, isSidebarOpen }) {
           <p><strong>Name:</strong> {user.name}</p>
           <p><strong>Email:</strong> {user.email}</p>
           <p><strong>Role:</strong> {user.role}</p>
-          <button onClick={handleLogout}>Logout</button>
+          <button onClick={() => handleLogout("manual")}>Logout</button>
         </div>
       )}
     </header>
+    <ToastContainer/>
+    </>
   );
 }

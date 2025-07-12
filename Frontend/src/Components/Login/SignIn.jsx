@@ -1,5 +1,8 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -19,22 +22,39 @@ export default function SignIn() {
       const data = await res.json();
 
       if (res.ok) {
+        // Show success toast
+        toast.success("Login successful!", {
+          position: "top-right",
+          autoClose: 2000,
+        });
+
         localStorage.setItem("token", data.token);
         localStorage.setItem("role", data.role);
 
+        // Redirect after showing toast
+      setTimeout(() => {
         if (data.role === "admin") {
           navigate("/admin-dashboard");
         } else {
           navigate("/dashboard");
         }
-      } else {
-        alert(data.msg || "Login failed");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Something went wrong");
+      }, 2000); // Wait for toast to finish
+    } else {
+      // Show error toast
+      toast.error(data.msg || "Login failed", {
+        position: "top-right",
+        autoClose: 3000,
+      });
     }
-  };
+  } catch (err) {
+    console.error(err);
+    // Show generic error toast
+    toast.error("Something went wrong", {
+      position: "top-right",
+      autoClose: 3000,
+    });
+  }
+};
 
   return (
     <div className="auth-container">
@@ -64,6 +84,7 @@ export default function SignIn() {
           </p>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 }

@@ -152,7 +152,7 @@
   }
 
   .sidebar {
-    /* width: 100%; */
+    width: 220px;
     display: flex;
     /* flex-direction: row; */
     overflow-x: auto;
@@ -162,5 +162,11 @@
     flex: 1;
     /* text-align: center; */
     margin: 0;
+  }
+}
+
+@media(max-width:480px){
+  .sidebar{
+    width: 200px;
   }
 }
