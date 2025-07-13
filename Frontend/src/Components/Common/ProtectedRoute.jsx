@@ -1,16 +1,42 @@
+import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 
 export default function ProtectedRoute({ children, role }) {
-  const token = localStorage.getItem("token");
-  const userRole = localStorage.getItem("role");
+  const [authStatus, setAuthStatus] = useState("loading");
+  const [userRole, setUserRole] = useState(null);
 
-  // If no token, redirect to SignIn
-  if (!token) return <Navigate to="/" replace />;
+  useEffect(() => {
+    async function checkAuth() {
+      try {
+        const res = await fetch("http://localhost:5000/api/auth/profile", {
+          method: "GET",
+          credentials: "include", // ✅ send cookie
+        });
 
-  // If role is specified (like "admin") but user doesn't match, redirect
+        const data = await res.json();
+
+        if (res.ok) {
+          setUserRole(data.role);
+          setAuthStatus("authorized");
+        } else {
+          setAuthStatus("unauth");
+        }
+      } catch (err) {
+        console.error("Auth check failed", err);
+        setAuthStatus("unauth");
+      }
+    }
+
+    checkAuth();
+  }, []);
+
+  if (authStatus === "loading") return <div>Loading...</div>;
+
+  if (authStatus === "unauth") return <Navigate to="/" replace />;
+
   if (role && userRole !== role) {
     return <Navigate to="/dashboard" replace />;
   }
 
-  return children; // Allow access
+  return children;
 }

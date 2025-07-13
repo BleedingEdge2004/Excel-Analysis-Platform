@@ -16,16 +16,12 @@ export default function SignUp() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),
+        credentials: "include", // ✅ send cookie
       });
 
       const data = await res.json();
 
       if (res.ok) {
-        // Store the JWT token in localStorage
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("role", data.role);
-
-        // Redirect user based on their role
         if (data.role === "admin") {
           navigate("/admin-dashboard");
         } else {
