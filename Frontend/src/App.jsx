@@ -4,6 +4,7 @@ import SignUp from "./Components/Login/SignUp";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import AdminDashboard from "./Components/AdminDashboard/AdminDashboard";
 import ProtectedRoute from "./Components/Common/ProtectedRoute";
+import Homepage from "./Components/Homepage/Homepage";
 import './App.css';
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
     <Router>
       <div className="app-container">
         <Routes>
-          <Route path="/" element={<SignIn />} />
+          <Route path="/" element={<Homepage />}/>
+          <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route
             path="/dashboard"

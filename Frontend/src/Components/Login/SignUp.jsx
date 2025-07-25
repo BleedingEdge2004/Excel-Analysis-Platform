@@ -67,7 +67,7 @@ export default function SignUp() {
           <button type="submit" className="auth-button">Sign Up</button>
           <p className="auth-text">
             Already have an account?{" "}
-            <Link to="/" className="auth-link">Sign In</Link>
+            <Link to="/signin" className="auth-link">Sign In</Link>
           </p>
         </form>
       </div>
