@@ -5,6 +5,7 @@ import img2 from '../../assets/img2.png';
 import "./Homepage.css";
 
 
+
 const Homepage = () => {
     return (
         <div className="App">
@@ -20,7 +21,7 @@ const Homepage = () => {
 
                     </ul>
 </div>
-<button ><a className="proflie" href="/signin">Log In</a></button>
+<button ><a className="login" href="/signin">Log In</a></button>
             </div>
     
             <div className="image">
@@ -77,9 +78,8 @@ const Homepage = () => {
                     </li>
                 </ol>
             </div>
-    
         </div>
-    );
+        );
 };
 
 export default Homepage;
