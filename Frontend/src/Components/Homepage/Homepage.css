@@ -206,32 +206,34 @@ input[type="file"] {
   margin-left: 30%;
   margin-bottom: 10px;
   font-weight: bold;
-}.proflie {
+}
+.login {
  position: absolute;
  top: 20px;
  right: 90px;
+  font-weight:initial;
+  font-family: Times, serif;
+  padding:5px;
 }
-
-a{
-  background-color: #1900ff;
-  padding: 10px;
-  width: 60px;
-  border-radius: 10px;
+ .login{
+  width: 90px;
+  background-color: #3b3be9;
   color: #ffffff;
-  font-size: medium;
-  font-weight: bold;
-}
+  padding: 5px;
+  border-radius: 5px;
+  font-size: x-large;
 
-a:hover{
-  background-color: #f7f7f7;
-  color: #1900ff;
-}
+ }
+ .login:hover{
+  background-color: #ffffff;
+  color: #3b3be9;
+ }
 
-.proflie:not([disabled]):focus {
+.login:not([disabled]):focus {
   box-shadow: 0 0 .25rem rgba(96, 108, 218, 0.5), -.125rem -.125rem 1rem rgba(171, 160, 218, 0.5), .125rem .125rem 1rem rgba(51, 22, 212, 0.5);
 }
 
-.proflie:not([disabled]):hover {
+.login:not([disabled]):hover {
   box-shadow: 0 0 .25rem rgba(45, 6, 216, 0.5), -.125rem -.125rem 1rem rgba(10, 39, 167, 0.5), .125rem .125rem 1rem rgba(28, 14, 148, 0.5);
 }
 
@@ -334,3 +336,4 @@ h3{
   background-color: #d2cdff;
   border-radius: 10px;
 }
+
