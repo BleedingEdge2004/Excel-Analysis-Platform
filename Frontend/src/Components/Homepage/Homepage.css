@@ -1,102 +1,104 @@
-.App {
-  background: linear-gradient(125deg,rgb(59, 59, 255),rgb(108, 108, 255),rgb(135, 247, 236));
-  height: 100%;
+.App{
+  background-color: rgb(255, 255, 255);
+  height: 200vh;
 }
-.navbar {
-  width: auto;
+.navbar{
+width: 100%;
   display: flex;
   align-items: center;
-  background: transparent;
+  background-color: #ffffff;
   margin: 0%;
   height: 80px;
 }
-.content {
+.content{
   margin-top: 10%;
 }
 
-ul {
-  background-repeat: no-repeat;
-  background-size: 300px 100px;
+ul{
+ background-repeat: no-repeat;
+  background-size: 300px 100px;;
   flex: 1;
   list-style: none;
   text-align: center;
-  border-radius: 8px;
-  box-shadow: 3px 3px 3px black, -3px -3px 3px black;
 }
-ul li {
+ul li{
   display: inline-block;
   padding: 20px;
   font-size: 18px;
   cursor: pointer;
 }
-/* ul li.nav-item {
+ ul li.nav-item {
   list-style: none;
   display: inline-block;
   margin: 0 15px;
-} */
-.nav {
-  background-color: transparent;
+ 
+}
+.nav{
+  background-color: rgb(0, 26, 255);
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 30%;
+   width: 25%;
   height: 60px;
   padding: 0 20px;
+  margin-right: 20%;
 }
-li a {
+li a{
   color: #f8f5f5;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
 }
-ul.nav-list li {
+ul.nav-list li{
   display: inline-block;
   padding: 4px 6px;
   font-size: 18px;
   cursor: pointer;
 }
-a {
+a{
   align-items: center;
-  padding-left: 20px;
+  padding-left: 2px;
   align-items: center;
   text-decoration: none;
 }
 .App-logo {
   margin-top: 25px;
+  height: 200px;
   width: 150px;
   margin-left: 20px;
-  border-radius: 100px;
 }
 .content {
   display: flex;
   flex-direction: column;
   text-align: center;
+
 }
 .wel {
-  padding-top: 50px;
-  margin-top: 10px;
+padding-top: 50px;
+ margin-top: 10px;
   text-align: start;
-  font-size: 48px;
+  font-size: 24px;
   color: #333;
-  animation: abomination1 7.5s linear 1s infinite;
+animation: abomination1 7.5s linear 1s infinite;
   animation-fill-mode: forwards;
   padding-left: 20%;
 }
 
 .img {
+
   width: 30%;
   height: 40%;
   margin-top: 90px;
   margin-right: 10%;
-  border-radius: 15px;
-  float: right;
+  border-radius: 10px;
+ float: right;
 }
-/* 
-.wel {
-  font-size: 48px;
+
+.wel{
+font-size: 48px;
   color: #333;
-} */
+}
 
 .wel:after {
   position: absolute;
@@ -110,7 +112,8 @@ a {
   transition: 1ms;
 }
 
-@keyframes abomination1 {
+
+  @keyframes abomination1 {
   0% {
     content: "W";
   }
@@ -133,14 +136,14 @@ a {
     content: "Welcome ";
   }
 }
-p {
+p{
   width: 60%;
   margin-left: 30%;
 }
-.flie-upload {
-  margin: 10% auto;
-  /* width: 30%; */
-  height: 200px;
+.flie-upload{
+  margin:10% auto;
+  width: 30%;
+  height: 400px;
   background-color: rgb(233, 233, 240);
   border: 1px;
   border-style: dashed;
@@ -155,83 +158,72 @@ p {
   width: 100%;
   height: auto;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   margin-top: 10px;
 }
 .upload-img {
-  width: 60%;
+  width: 70%;
   height: 60%;
   margin-bottom: 0px;
-  margin-left: 20%;
+  margin-left:20% ;
 }
 .file-input {
-  display: flex;
+  display: flex;  
   align-items: center;
   justify-content: center;
-  color: #29eb22;
 }
 input[type="file"] {
-  color: #5957bb;
+  color: #3b3be9;
+  box-sizing: border-box;
 }
 .file-input {
   width: 80%;
   padding-left: 30%;
   font-size: 16px;
   color: #737ddd;
+  margin-bottom: 10px;
 }
 .upload-text {
   font-size: 15px;
   color: #333;
   margin-top: 10px;
+  margin-bottom: 20px;
   margin-left: 30%;
   font-weight: bold;
 }
 .drag {
   font-size: 15px;
   color: #333;
-  margin-top: 1px;
   margin-left: 30%;
+  margin-bottom: 10px;
   font-weight: bold;
-}
-.proflie {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+}.proflie {
+ position: absolute;
+ top: 20px;
+ right: 90px;
 }
 
-.proflie button {
-  background: linear-gradient(to bottom right, #3d32d8, #7068e6);
-  border: 0;
-  border-radius: 12px;
+a{
+  background-color: #1900ff;
+  padding: 10px;
+  width: 60px;
+  border-radius: 10px;
   color: #ffffff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 2.5;
-  outline: transparent;
-  padding: 0 1rem;
-  text-align: center;
-  text-decoration: none;
-  transition: box-shadow 0.2s ease-in-out;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
+  font-size: medium;
+  font-weight: bold;
+}
+
+a:hover{
+  background-color: #f7f7f7;
+  color: #1900ff;
 }
 
 .proflie:not([disabled]):focus {
-  box-shadow: 0 0 0.25rem rgba(96, 108, 218, 0.5),
-    -0.125rem -0.125rem 1rem rgba(171, 160, 218, 0.5),
-    0.125rem 0.125rem 1rem rgba(51, 22, 212, 0.5);
+  box-shadow: 0 0 .25rem rgba(96, 108, 218, 0.5), -.125rem -.125rem 1rem rgba(171, 160, 218, 0.5), .125rem .125rem 1rem rgba(51, 22, 212, 0.5);
 }
 
 .proflie:not([disabled]):hover {
-  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
-    -0.125rem -0.125rem 1rem rgba(10, 39, 167, 0.5),
-    0.125rem 0.125rem 1rem rgba(28, 14, 148, 0.5);
+  box-shadow: 0 0 .25rem rgba(45, 6, 216, 0.5), -.125rem -.125rem 1rem rgba(10, 39, 167, 0.5), .125rem .125rem 1rem rgba(28, 14, 148, 0.5);
 }
 
 ul.nav-list li a[href="#home"],
@@ -240,21 +232,20 @@ ul.nav-list li a[href="#about"] {
   color: #f7f7f7;
   border-radius: 0;
   padding: 0 8px;
-
-  transition: border-bottom 0.2s, color 0.2s;
+transition: border-bottom 0.2s, color 0.2s;
 }
 
 ul.nav-list li a[href="#home"]:hover,
 ul.nav-list li a[href="#about"]:hover {
-  background-color: white;
+background-color: white;
   color: #333;
-  padding: 10px 20px;
+ padding: 10px 20px;
   border-radius: 5px;
 }
 
 .container.mx-auto.text-center {
-  color: rgb(231, 231, 238);
-}
+      color: rgb(231, 231, 238);
+    }
 
 .howto-title {
   display: flex;
@@ -262,14 +253,15 @@ ul.nav-list li a[href="#about"]:hover {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 60px;
+  margin-top: 10%;
   position: relative;
 }
-ol {
+ol{
   list-style-type: none;
   display: flex;
   margin-left: 0%;
 }
-.step-number {
+.step-number{
   font-size: 24px;
   font-weight: bold;
   justify-content: center;
@@ -284,30 +276,50 @@ ol {
   width: 40px;
 }
 span.step-text {
+  padding: 20px;
   font-size: 18px;
   color: #333;
   display: inline-block;
   margin-left: 10px;
 }
-.title1 {
-  margin-left: 37%;
+.title1{
+  padding: 10px;
+  margin-left: 35%;
   font-size: 24px;
   font-weight: bold;
   color: #0a0a0a;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
-.title2 {
+.title2{
   margin-left: 30%;
   font-size: 24px;
   font-weight: bold;
   color: #0a0a0a;
   margin-bottom: 20px;
 }
-.title3 {
+.title3{
+  font-size: 24px;
   margin-left: 37%;
 }
 li.howto-column {
   flex: 2;
   margin: 0 30px;
   margin-bottom: 10%;
+
+}
+h3{
+  margin-top: 10%;
+}
+.file-upload{
+  border-style: dashed;
+  margin-left: 30%;
+  margin-top: 30%;
+  margin-right: 40%;
+  padding: auto;
+  width: fit-content;
+  border-color: #3d32d8;
+
+}
+.upload-container{
+  background-color: #d2cdff;
 }
