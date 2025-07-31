@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 const cookieParser = require('cookie-parser');
+const uploadRoute = require("./routes/uploadRoute");
 const authRoutes = require("./routes/auth");
 
 const app = express();
@@ -18,6 +19,7 @@ app.use(cors({
 app.use(cookieParser());
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/files", uploadRoute);
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)

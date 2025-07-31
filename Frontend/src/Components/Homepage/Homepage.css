@@ -321,19 +321,4 @@ li.howto-column {
 h3{
   margin-top: 10%;
 }
-.file-upload{
-  border-style: dashed;
-  border-radius:10px ;
-  margin-left: 30%;
-  margin-top: 30%;
-  margin-right: 40%;
-  padding: auto;
-  width: fit-content;
-  border-color: #3d32d8;
-
-}
-.upload-container{
-  background-color: #d2cdff;
-  border-radius: 10px;
-}
 
