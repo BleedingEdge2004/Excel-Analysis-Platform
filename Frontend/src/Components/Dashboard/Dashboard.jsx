@@ -1,22 +1,42 @@
 import { useState, useEffect } from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import img2 from "../../assets/img2.png";
+import img3 from "../../assets/dash.png";
 import Navbar from "../Navbar/Navbar";
 import "./Dashboard.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ExcelVisualizer from "../ExcelVisualizer/ExcelVisualizer";
 
 export default function Dashboard() {
+  const [user, setUser] = useState({ name: "", email: "", role: "" });
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [selectedFile, setSelectedFile] = useState(null);
-  const [uploadHistory, setUploadHistory] = useState([]);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await fetch("http://localhost:5000/api/auth/profile", {
+          method: "GET",
+          credentials: "include",
+        });
+
+        if (!res.ok) {
+          throw new Error("Unauthorized");
+        }
+
+        const data = await res.json();
+        setUser(data);
+      } catch (err) {
+        console.error("Auth failed:", err);
+        // handleLogout("expired"); // Remove or define handleLogout if needed
+      }
+    };
+    fetchUser();
+  }, []);
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
-  };
-
-  const handleFileChange = (e) => {
-    setSelectedFile(e.target.files[0]);
   };
 
   const handleUpload = async () => {
@@ -40,7 +60,6 @@ export default function Dashboard() {
       if (res.ok) {
         toast.success(`Uploaded: ${data.file}`);
         setSelectedFile(null);
-        fetchUploadHistory(); // Refresh history after successful upload
       } else {
         toast.error(data.message || "Upload failed");
       }
@@ -50,23 +69,6 @@ export default function Dashboard() {
     }
   };
 
-  const fetchUploadHistory = async () => {
-    try {
-      const res = await fetch("http://localhost:5000/api/files/history", {
-        credentials: "include",
-      });
-
-      const data = await res.json();
-      setUploadHistory(data.uploads); // ✅ just the array, no .map error
-    } catch (err) {
-      console.error("Failed to fetch upload history:", err);
-    }
-  };
-
-  useEffect(() => {
-    fetchUploadHistory();
-  }, []);
-
   return (
     <div className="dashboard-container">
       <Sidebar isOpen={sidebarOpen} />
@@ -74,7 +76,22 @@ export default function Dashboard() {
         <Navbar onToggleSidebar={toggleSidebar} isSidebarOpen={sidebarOpen} />
 
         <div className="dashboard-body">
-          <h2>Welcome to the Dashboard</h2>
+          <h2>Welcome to the Dashboar to <strong className="name"> {user.name}</strong> </h2>
+         <div className="contents">
+          <div className="container-dashboard">
+            <h1 className="heading">Hello.{user.name}</h1>
+             <p className="top">
+              Welcome to your Excel Analytics Dashboard, where data meets clarity.
+Upload your Excel files and turn rows and columns into meaningful visual insights.
+Navigate your performance, trends, and summaries—all in one place.
+
+</p>
+            <img src={img3} alt="image" className="dash-img"/>
+           <div className="dashboard-text">
+
+           </div>
+          </div>
+          </div>
 
           <div className="file-upload">
             <div className="upload-container">
@@ -82,39 +99,13 @@ export default function Dashboard() {
                 <img src={img2} className="upload-img" alt="Upload Icon" />
                 <p className="drag">Drag and Drop or Upload</p>
               </div>
-              <input
-                type="file"
-                className="file-input"
-                accept=".xls,.xlsx"
-                onChange={handleFileChange}
-              />
-              <span className="upload-text">Upload Excel File</span>
-              <button className="upload-button" onClick={handleUpload}>
-                Upload
-              </button>
             </div>
+            < ExcelVisualizer
+                selectedFile={selectedFile}/>
           </div>
-
-          {/* ✅ Upload History Section */}
-          <div className="upload-history">
-            <h3>Upload History</h3>
-            {Array.isArray(uploadHistory) && uploadHistory.length > 0 ? (
-              <ul className="history-list">
-                {uploadHistory.map((file, index) => (
-                  <li key={index} className="history-item">
-                    <p><strong>File:</strong> {file.filename}</p>
-                    <p><strong>Size:</strong> {(file.size / 1024).toFixed(2)} KB</p>
-                    <p><strong>Uploaded:</strong> {new Date(file.createdAt).toLocaleString()}</p>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>No uploads yet.</p>
-            )}
-          </div>
+<ToastContainer />
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 }
