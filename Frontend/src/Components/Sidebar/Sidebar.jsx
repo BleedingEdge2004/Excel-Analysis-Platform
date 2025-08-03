@@ -1,12 +1,14 @@
+import React from "react";
+import { Link } from "react-router-dom";
 import "./Sidebar.css";
 
 export default function Sidebar({ isOpen }) {
   return (
     <div className={`sidebar ${isOpen ? "closed" : "open"}`}>
       <nav className="sidebar-menu">
-        <a href="#" className="sidebar-link active">🏠 Dashboard</a>
-        <a href="#" className="sidebar-link">📜 My History</a>
-        <a href="#" className="sidebar-link">⚙️ Settings</a>
+        <Link to="/dashboard" className="sidebar-link">🏠 Dashboard</Link>
+        <Link to="/history" className="sidebar-link">📜 History</Link>
+        <Link to="/settings" className="sidebar-link">⚙️ Settings</Link>
       </nav>
     </div>
   );
