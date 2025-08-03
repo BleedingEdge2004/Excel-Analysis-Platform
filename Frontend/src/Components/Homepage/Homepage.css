@@ -1,3 +1,8 @@
+
+*{
+  font-family: 'Times New Roman', Times, serif;
+}
+
 .App{
   background-color: rgb(255, 255, 255);
   height: 200vh;
@@ -144,7 +149,6 @@ font-size: 48px;
 
 }
 p{
-  width: 70%;
   margin-left: 25%;
   margin-top: 10px;
   font-size: 20px;
@@ -174,7 +178,7 @@ p{
   width: 70%;
   height: 60%;
   margin-bottom: 0px;
-  margin-left:20% ;
+  margin-left:10% ;
 }
 .file-input {
   display: flex;  
@@ -203,7 +207,7 @@ input[type="file"] {
 .drag {
   font-size: 15px;
   color: #333;
-  margin-left: 30%;
+  margin-left: 20%;
   margin-bottom: 10px;
   font-weight: bold;
 }
@@ -321,4 +325,11 @@ li.howto-column {
 h3{
   margin-top: 10%;
 }
-
+.howto-title{
+  margin-top: 60%;
+  font-size: 36px;
+  color: #333;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 70px;
+}
