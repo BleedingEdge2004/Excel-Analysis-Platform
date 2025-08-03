@@ -5,6 +5,7 @@ import Dashboard from "./Components/Dashboard/Dashboard";
 import AdminDashboard from "./Components/AdminDashboard/AdminDashboard";
 import ProtectedRoute from "./Components/Common/ProtectedRoute";
 import Homepage from "./Components/Homepage/Homepage";
+import History from "./Components/upload/uploadhistory";
 import './App.css';
 
 function App() {
@@ -12,9 +13,11 @@ function App() {
     <Router>
       <div className="app-container">
         <Routes>
-          <Route path="/" element={<Homepage />}/>
+          <Route path="/" element={<Homepage />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+          /* trunk-ignore(git-diff-check/error) */
+          <Route path="/history" element={<History />} />
           <Route
             path="/dashboard"
             element={
