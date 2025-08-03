@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import img4 from "../../Assets/logo1.svg";
 import "./Navbar.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -66,13 +67,13 @@ export default function Navbar({ onToggleSidebar, isSidebarOpen }) {
           {isSidebarOpen ? "☰" : "✖"}
         </button>
 
-        <h1 className="navbar-title">📊 Excel Analytics</h1>
+        <h1 className="navbar-title"><img className="nav-img" src={img4} alt=" logo" /></h1>
 
         <div className="user-icon" onClick={toggleProfile}>👤</div>
 
         {showProfile && (
           <div className="user-profile">
-            <p><strong>Name:</strong> {user.name}</p>
+            <p><strong>Name:</strong>{user.name}</p>
             <p><strong>Email:</strong> {user.email}</p>
             <p><strong>Role:</strong> {user.role}</p>
             <button onClick={() => handleLogout("manual")}>Logout</button>
