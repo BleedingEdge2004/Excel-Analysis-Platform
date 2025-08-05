@@ -215,18 +215,21 @@ input[type="file"] {
  position: absolute;
  top: 20px;
  right: 90px;
-  font-weight:initial;
-  font-family: Times, serif;
-  padding:5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #3b3be9;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
 }
  .login{
-  width: 90px;
+  width: 50px;
   background-color: #3b3be9;
   color: #ffffff;
-  padding: 5px;
+  padding:inherit;
   border-radius: 5px;
-  font-size: x-large;
-
  }
  .login:hover{
   background-color: #ffffff;
