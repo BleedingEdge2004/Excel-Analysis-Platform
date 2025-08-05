@@ -214,19 +214,16 @@ input[type="file"] {
 .login {
  position: absolute;
  top: 20px;
- right: 90px;
-  padding: 10px 20px;
+ right: 20px;
   font-size: 16px;
   font-weight: bold;
   text-decoration: none;
-  color: #ffffff;
-  background-color: #3b3be9;
-  border-radius: 5px;
   transition: background-color 0.3s, color 0.3s;
+  display: flex;
 }
  .login{
   width: 50px;
-  background-color: #3b3be9;
+  background-color: #2727ff;
   color: #ffffff;
   padding:inherit;
   border-radius: 5px;
