@@ -8,7 +8,7 @@ export default function Sidebar({ isOpen }) {
       <nav className="sidebar-menu">
         <Link to="/dashboard" className="sidebar-link">🏠 Dashboard</Link>
         <Link to="/history" className="sidebar-link">📜 History</Link>
-        <Link to="/settings" className="sidebar-link">⚙️ Settings</Link>
+        {/* <Link to="/settings" className="sidebar-link">⚙️ Settings</Link> */}
       </nav>
     </div>
   );

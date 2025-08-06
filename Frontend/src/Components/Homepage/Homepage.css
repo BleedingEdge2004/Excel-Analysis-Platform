@@ -1,335 +1,245 @@
-
-*{
-  font-family: 'Times New Roman', Times, serif;
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.App{
-  background-color: rgb(255, 255, 255);
-  height: 200vh;
-}
-.navbar{
-width: 100%;
-  display: flex;
-  align-items: center;
-  background-color: #ffffff;
-  margin: 0%;
-  height: 80px;
-}
-.content{
-  margin-top: 10%;
+.homepage {
+  background-color: #fff;
+  width: 100%;
 }
 
-ul{
- background-repeat: no-repeat;
-  background-size: 300px 100px;;
-  flex: 1;
-  list-style: none;
-  text-align: center;
-}
-ul li{
-  display: inline-block;
-  padding: 20px;
-  font-size: 18px;
-  cursor: pointer;
-}
- ul li.nav-item {
-  list-style: none;
-  display: inline-block;
-  margin: 0 15px;
- 
-}
-.nav{
-  background-color: rgb(0, 26, 255);
-  border-radius: 10px;
+/* Navbar */
+.homepage-navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-   width: 25%;
-  height: 60px;
-  padding: 0 20px;
-  margin-right: 20%;
+  padding: 20px 40px;
 }
-li a{
-  color: #f8f5f5;
+
+.homepage-logo {
+  height: 80px;
+}
+
+.homepage-nav {
+  background-color: #002aff;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.homepage-nav-list {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.homepage-nav-list li a {
+  color: #fff;
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s ease;
-}
-ul.nav-list li{
-  display: inline-block;
-  padding: 4px 6px;
-  font-size: 18px;
-  cursor: pointer;
-}
-a{
-  align-items: center;
-  padding-left: 2px;
-  align-items: center;
-  text-decoration: none;
-}
-.App-logo {
-  margin-top: 25px;
-  height: 200px;
-  width: 150px;
-  margin-left: 20px;
-}
-.content {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-
-}
-.wel {
-padding-top: 50px;
- margin-top: 10px;
-  text-align: start;
-  font-size: 24px;
-  color: #333;
-animation: abomination1 7.5s linear 1s infinite;
-  animation-fill-mode: forwards;
-  padding-left: 20%;
-}
-
-.img {
-
-  width: 30%;
-  height: 40%;
-  margin-top: 90px;
-  margin-right: 10%;
-  border-radius: 10px;
- float: right;
-}
-
-.wel{
-font-size: 48px;
-  color: #333;
-}
-
-.wel:after {
-  position: absolute;
-  content: "W";
-  height: 100%;
-  line-height: 48px;
-  left: 15%;
-  top: 40%;
-  animation: abomination1 5.5s linear 1s infinite;
-  animation-fill-mode: forwards;
-  transition: 1ms;
-}
-
-
-  @keyframes abomination1 {
-  0% {
-    content: "W";
-  }
-  4% {
-    content: "We";
-  }
-  8% {
-    content: "Wel";
-  }
-  12% {
-    content: "Welc ";
-  }
-  16% {
-    content: "Welco";
-  }
-  20% {
-    content: "Welcom ";
-  }
-  24% {
-    content: "Welcome ";
-  }
-  30%{
-    content: "Welcome.";
-  }
-  34%{
-    content: "Welcome..";
-  }
-
-}
-p{
-  margin-left: 25%;
-  margin-top: 10px;
-  font-size: 20px;
-}
-.flie-upload{
-  margin:10% auto;
-  width: 30%;
-  height: 400px;
-  background-color: rgb(233, 233, 240);
-  border: 1px;
-  border-style: dashed;
-  border-color: rgb(71, 36, 231);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.image {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  margin-top: 10px;
-}
-.upload-img {
-  width: 70%;
-  height: 60%;
-  margin-bottom: 0px;
-  margin-left:10% ;
-}
-.file-input {
-  display: flex;  
-  align-items: center;
-  justify-content: center;
-}
-input[type="file"] {
-  color: #3b3be9;
-  box-sizing: border-box;
-}
-.file-input {
-  width: 80%;
-  padding-left: 30%;
-  font-size: 16px;
-  color: #737ddd;
-  margin-bottom: 10px;
-}
-.upload-text {
-  font-size: 15px;
-  color: #333;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  margin-left: 30%;
-  font-weight: bold;
-}
-.drag {
-  font-size: 15px;
-  color: #333;
-  margin-left: 20%;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-.login {
- position: absolute;
- top: 20px;
- right: 20px;
-  font-size: 16px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background-color 0.3s, color 0.3s;
-  display: flex;
-}
- .login{
-  width: 50px;
-  background-color: #2727ff;
-  color: #ffffff;
-  padding:inherit;
+  padding: 8px 12px;
   border-radius: 5px;
- }
- .login:hover{
+  transition: 0.3s ease;
+}
+
+.homepage-nav-list li a:hover {
+  background-color: #fff;
+  color: #002aff;
+}
+
+.homepage-login {
+  background-color: #3b3be9;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.homepage-login:hover {
   background-color: #ffffff;
   color: #3b3be9;
- }
-
-.login:not([disabled]):focus {
-  box-shadow: 0 0 .25rem rgba(96, 108, 218, 0.5), -.125rem -.125rem 1rem rgba(171, 160, 218, 0.5), .125rem .125rem 1rem rgba(51, 22, 212, 0.5);
+  box-shadow: 0 0 8px rgba(0, 42, 255, 0.3);
 }
 
-.login:not([disabled]):hover {
-  box-shadow: 0 0 .25rem rgba(45, 6, 216, 0.5), -.125rem -.125rem 1rem rgba(10, 39, 167, 0.5), .125rem .125rem 1rem rgba(28, 14, 148, 0.5);
-}
-
-ul.nav-list li a[href="#home"],
-ul.nav-list li a[href="#about"] {
-  background: none;
-  color: #f7f7f7;
-  border-radius: 0;
-  padding: 0 8px;
-transition: border-bottom 0.2s, color 0.2s;
-}
-
-ul.nav-list li a[href="#home"]:hover,
-ul.nav-list li a[href="#about"]:hover {
-background-color: white;
-  color: #333;
- padding: 10px 20px;
-  border-radius: 5px;
-}
-
-.container.mx-auto.text-center {
-      color: rgb(231, 231, 238);
-    }
-
-.howto-title {
+/* Hero Section */
+.homepage-hero {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 60px;
-  margin-top: 10%;
+  padding: 60px 40px;
+}
+
+.homepage-text {
+  flex: 1 1 400px;
+  padding: 20px;
   position: relative;
 }
-ol{
-  list-style-type: none;
-  display: flex;
-  margin-left: 0%;
-}
-.step-number{
-  font-size: 24px;
-  font-weight: bold;
-  justify-content: center;
-  text-align: center;
-  color: #f8f6f6;
-  margin-right: 10px;
-  display: inline-block;
-  margin-left: 40%;
-  background-color: #3d32d8;
-  padding: 10px;
-  border-radius: 50%;
-  width: 40px;
-}
-span.step-text {
-  padding: 20px;
-  font-size: 18px;
+
+.homepage-welcome {
+  font-size: 48px;
   color: #333;
-  display: inline-block;
-  margin-left: 10px;
+  position: relative;
+  height: 60px;
 }
-.title1{
-  padding: 10px;
-  margin-left: 35%;
-  font-size: 24px;
+
+.homepage-welcome::after {
+  position: absolute;
+  content: "W";
+  left: 0;
+  top: 0;
+  animation: homepage-animateText 6s linear 1s infinite;
+}
+
+@keyframes homepage-animateText {
+  0% { content: "W"; }
+  4% { content: "We"; }
+  8% { content: "Wel"; }
+  12% { content: "Welc"; }
+  16% { content: "Welco"; }
+  20% { content: "Welcom"; }
+  24% { content: "Welcome"; }
+  30% { content: "Welcome."; }
+  34% { content: "Welcome.."; }
+  38% { content: "Welcome..."; }
+  42% { content: "Welcome..."; }
+  100% { content: "W"; }
+}
+
+.homepage-description {
+  font-size: 18px;
+  color: #555;
+  margin-top: 20px;
+}
+
+.homepage-image {
+  flex: 1 1 300px;
+  max-width: 400px;
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+/* How-To Section */
+.homepage-howto {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.homepage-howto-title {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.homepage-howto-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  padding: 0;
+  list-style: none;
+}
+
+.homepage-howto-step {
+  flex: 1 1 250px;
+  max-width: 300px;
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.homepage-step-number {
+  font-size: 20px;
   font-weight: bold;
-  color: #0a0a0a;
+  color: #fff;
+  background-color: #3d32d8;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  display: inline-block;
   margin-bottom: 10px;
 }
-.title2{
-  margin-left: 30%;
-  font-size: 24px;
-  font-weight: bold;
-  color: #0a0a0a;
-  margin-bottom: 20px;
-}
-.title3{
-  font-size: 24px;
-  margin-left: 37%;
-}
-li.howto-column {
-  flex: 2;
-  margin: 0 30px;
-  margin-bottom: 10%;
 
-}
-h3{
-  margin-top: 10%;
-}
-.howto-title{
-  margin-top: 60%;
-  font-size: 36px;
-  color: #333;
-  text-align: center;
+.homepage-step-title {
+  font-size: 20px;
   font-weight: bold;
-  margin-bottom: 70px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.homepage-step-text {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .homepage-navbar {
+    gap: 10px;
+    padding: 8px;
+  }
+
+  .homepage-logo{
+    height: 40px;
+  }
+
+  .homepage-nav{
+    padding: 4px 8px;
+  }
+
+  .homepage-nav-list{
+    gap: 10px;
+  }
+
+  .homepage-nav-list li a{
+    padding: 3px;
+  }
+
+  .homepage-nav ul li a{
+    font-size: 10px;
+  }
+
+  .homepage-login{
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+
+  .homepage-hero {
+    flex-direction: column-reverse;
+    padding: 40px 20px;
+  }
+
+  .homepage-image {
+    flex: 1 1;
+    margin-top: 20px;
+    max-width: 250px;
+  }
+
+  .homepage-text{
+    flex: 1 1;
+  }
+
+  .homepage-howto{
+    padding: 10px;
+  }
+
+  .homepage-howto-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .homepage-welcome, .homepage-description {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .homepage-howto-step{
+    flex: 1 1;
+  }
 }

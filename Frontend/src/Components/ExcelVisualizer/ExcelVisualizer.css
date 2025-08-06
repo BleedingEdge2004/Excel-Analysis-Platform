@@ -1,59 +1,107 @@
 .excel-visualizer {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  min-height: 100vh;
+  /* background-color: #f4f4f4; */
 }
-input{
-  align-self: start;
-  margin-top: 10px;
-  margin-left: 10%;
-}
-input[type="file"] {
-  display: block;
-  margin: 5 auto;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
 .upload-section {
-  display: block;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 1.5rem;
+  padding: 2rem;
+  background-color: #ffffff;
+  border: 2px dashed #90caf9;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  transition: background-color 0.3s ease;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
 }
-.upload-text {
-    color: #333;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    font-weight: bold;
+
+.upload-section:hover {
+  background-color: #f1faff;
 }
 
 .upload-text {
-  font-weight: bold;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1976d2;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+input[type="file"] {
+  border: none;
+  padding: 10px 12px;
+  font-size: 1rem;
+  color: #333;
+  background-color: #e3f2fd;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 400px;
+  transition: background-color 0.2s ease;
+}
+
+input[type="file"]:hover {
+  background-color: #bbdefb;
 }
 
 .upload-button {
-  padding: 6px 12px;
-  background-color: #aa7744;
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background-color: #1976d2;
   color: white;
+  font-weight: bold;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
 }
 
 .upload-button:hover {
-  background-color: #8c5f33;
+  background-color: #1565c0;
 }
 
+
 .select-section {
-  margin-bottom: 1rem;
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.select-section label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .dropdown {
-  margin-left: 0.5rem;
-  padding: 5px;
+  margin-top: 0.5rem;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  min-width: 200px;
+  transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+.dropdown:focus {
+  outline: none;
+  border-color: #1976d2;
+  background-color: #e3f2fd;
 }
 
 .chart-container {
@@ -83,4 +131,14 @@ input[type="file"] {
 
 .download-btn:hover {
   background-color: #2e7d32;
+}
+
+@media(max-width: 480px) {
+  .excel-visualizer{
+    max-width: 300px;
+  }
+
+  .chart-box{
+    width: 250px;
+  }
 }

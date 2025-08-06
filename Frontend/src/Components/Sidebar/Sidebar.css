@@ -12,6 +12,7 @@
 
 .sidebar.open {
   transform: translateX(0);
+  border-radius: 0px;
 }
 
 .sidebar.closed {

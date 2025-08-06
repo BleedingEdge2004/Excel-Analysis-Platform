@@ -3,7 +3,6 @@
   justify-content: space-between;
   background-color: #1e3a8a;
   color: white;
-
   position: relative;
   z-index: 1000;
 }
@@ -15,21 +14,21 @@
 
 .sidebar-toggle {
   background: transparent;
-  color: rgb(59, 6, 250);
+  color: rgb(255, 255, 255);
   border: none;
   font-size: 1.4rem;
   cursor: pointer;
 }
 .nav-img {
-  width: 150px;
+  width: 90px;
   display: flex;
-  float: left;
-  padding-right:20%;
-  margin-right: 500%
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
 }
 
 .sidebar-toggle:hover {
-  color: #7264ec;
+  color: #c8c8c8;
 }
 
 .user-icon {
@@ -38,7 +37,7 @@
   border-radius: 50%;
   padding: 8px;
   cursor: pointer;
-
+  margin-right: 3%;
 }
 
 .user-profile {
