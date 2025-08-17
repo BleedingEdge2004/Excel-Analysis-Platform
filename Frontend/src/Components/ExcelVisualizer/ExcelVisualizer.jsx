@@ -25,7 +25,7 @@ ChartJS.register(
   Legend
 );
 
-export default function ExcelVisualizer() {
+export default function ExcelVisualizer({ onFileSelect }) {
   const [excelData, setExcelData] = useState([]);
   const [columns, setColumns] = useState([]);
   const [xAxis, setXAxis] = useState("");
@@ -38,6 +38,12 @@ export default function ExcelVisualizer() {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
+    if (!file) return;
+
+    // Send file back up to Dashboard
+    if (onFileSelect) {
+      onFileSelect(file);
+    }
     const reader = new FileReader();
 
     reader.onload = (evt) => {
@@ -52,7 +58,6 @@ export default function ExcelVisualizer() {
         setColumns(Object.keys(data[0]));
       }
     };
-
     reader.readAsBinaryString(file);
   };
 

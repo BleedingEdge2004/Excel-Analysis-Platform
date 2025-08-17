@@ -1,14 +1,14 @@
-const express = require("express");
-const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
+import express from "express";
+import multer from "multer";
+import path from "path";
+import fs from "fs";
 const router = express.Router();
 
-const Upload = require("../models/Upload"); // ✅ import Upload model
-const authMiddleware = require("../middleware/authmiddleware"); // ✅ protect the route
+import Upload from "../models/Upload.js"; // ✅ import Upload model
+import authMiddleware from "../middleware/authmiddleware.js"; // ✅ protect the route
 
 // Create uploads folder if it doesn't exist
-const uploadPath = path.join(__dirname, "../uploads");
+const uploadPath = path.join(path.resolve(), "uploads");
 if (!fs.existsSync(uploadPath)) {
   fs.mkdirSync(uploadPath);
 }
@@ -68,7 +68,7 @@ router.post("/upload", authMiddleware, upload.single("file"), async (req, res) =
 // ✅ GET Upload History Route (for logged-in user)
 router.get("/history", authMiddleware, async (req, res) => {
   try {
-    const uploads = await Upload.find({ user: req.user.userId })
+    const uploads = await find({ user: req.user.userId })
       .sort({ createdAt: -1 }) // recent first
       .select("filename size mimetype createdAt"); // select what you need
 
@@ -79,4 +79,4 @@ router.get("/history", authMiddleware, async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

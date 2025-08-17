@@ -1,8 +1,8 @@
-const express = require("express");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const User = require("../models/User");
-const authMiddleware = require("../middleware/authmiddleware");
+import express from "express";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import User from "../models/User.js";
+import authMiddleware from "../middleware/authmiddleware.js";
 
 const router = express.Router();
 
@@ -48,7 +48,8 @@ router.post("/signup", async (req, res) => {
 });
 
 // Signin Route
-router.post("/signin", async (req, res) => {
+router.post("/signin", async (req, res) =>
+{
   const { email, password } = req.body;
 
   try {
@@ -100,4 +101,4 @@ router.post("/logout", (req, res) => {
   res.json({ msg: "Logged out successfully" });
 });
 
-module.exports = router;
+export default router;

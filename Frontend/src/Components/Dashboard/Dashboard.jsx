@@ -13,7 +13,13 @@ export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [selectedFile, setSelectedFile] = useState(null);
 
+  // NEW: AI state
+  const [aiInsights, setAIInsights] = useState("");
+  const [loadingAI, setLoadingAI] = useState(false);
+
+
   useEffect(() => {
+
     const fetchUser = async () => {
       try {
         const res = await fetch("http://localhost:5000/api/auth/profile", {
@@ -38,6 +44,7 @@ export default function Dashboard() {
     setSidebarOpen(!sidebarOpen);
   };
 
+  // eslint-disable-next-line no-unused-vars
   const handleUpload = async () => {
     if (!selectedFile) {
       toast.warn("Please select a file first!");
@@ -68,6 +75,37 @@ export default function Dashboard() {
     }
   };
 
+  // NEW: Handle AI Insights request
+  const handleGetAIInsights = async () => {
+    if (!selectedFile) {
+      toast.error("Please upload an Excel file first");
+      return;
+    }
+    try {
+      setLoadingAI(true);
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+
+      const res = await fetch("http://localhost:5000/api/analyze-ai", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+      if (data.error) {
+        toast.error(data.error);
+      } else {
+        setAIInsights(data.insights);
+        toast.success("AI Insights generated successfully");
+      }
+      // eslint-disable-next-line no-unused-vars
+    } catch (err) {
+      toast.error("Failed to get AI insights");
+    } finally {
+      setLoadingAI(false);
+    }
+  };
+
   return (
     <div className="dash-wrapper">
       <Sidebar isOpen={sidebarOpen} />
@@ -88,7 +126,9 @@ export default function Dashboard() {
                 Navigate your performance, trends, and summaries—all in one place.
               </p>
             </div>
-            <img src={img3} alt="Dashboard Illustration" className="dash-image" />
+            <div className="dash-info-image">
+              <img src={img3} alt="Dashboard Illustration" className="dash-image" />
+            </div>
           </div>
 
           <div className="upload-direction">
@@ -101,7 +141,32 @@ export default function Dashboard() {
               <img src={img2} className="dash-upload-icon" alt="Upload Icon" />
               <p className="dash-upload-text">Drag and Drop or Upload</p>
             </div> */}
-            <ExcelVisualizer selectedFile={selectedFile} />
+            <ExcelVisualizer onFileSelect={setSelectedFile} />
+
+            {/* NEW: AI Insights Section */}
+            {aiInsights && (
+              <div style={{ marginTop: "20px", background: "#f4f4f4", padding: "15px", borderRadius: "8px" }}>
+                <h3>AI Insights</h3>
+                <pre style={{ whiteSpace: "pre-wrap" }}>{aiInsights}</pre>
+              </div>
+            )}
+          </div>
+          <div>
+            {/* NEW: Get AI Insights button */}
+            <button
+              onClick={handleGetAIInsights}
+              disabled={loadingAI}
+              style={{
+                backgroundColor: "#007BFF",
+                color: "white",
+                padding: "8px 14px",
+                borderRadius: "5px",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              {loadingAI ? "Processing..." : "Get AI Insights"}
+            </button>
           </div>
           <ToastContainer />
         </div>
