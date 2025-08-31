@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import img4 from "../../Assets/logo1.svg";
+import img4 from "../../assets/logo1.svg";
 import "./Navbar.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
