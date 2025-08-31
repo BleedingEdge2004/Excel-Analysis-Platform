@@ -10,7 +10,7 @@ export default function Navbar({ onToggleSidebar, isSidebarOpen }) {
 
   const handleLogout = async (reason = "expired") => {
     try {
-      await fetch("http://localhost:5000/api/auth/logout", {
+      await fetch("https://excel-analysis-platform-gou1.onrender.com/api/auth/logout", {
         method: "POST",
         credentials: "include",
       });
@@ -38,7 +38,7 @@ export default function Navbar({ onToggleSidebar, isSidebarOpen }) {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/auth/profile", {
+        const res = await fetch("https://excel-analysis-platform-gou1.onrender.com/api/auth/profile", {
           method: "GET",
           credentials: "include",
         });

@@ -22,7 +22,7 @@ export default function Dashboard() {
 
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/auth/profile", {
+        const res = await fetch("https://excel-analysis-platform-gou1.onrender.com/api/auth/profile", {
           method: "GET",
           credentials: "include",
         });
@@ -55,7 +55,7 @@ export default function Dashboard() {
     formData.append("file", selectedFile);
 
     try {
-      const res = await fetch("http://localhost:5000/api/files/upload", {
+      const res = await fetch("https://excel-analysis-platform-gou1.onrender.com/api/files/upload", {
         method: "POST",
         body: formData,
         credentials: "include",
@@ -86,7 +86,7 @@ export default function Dashboard() {
       const formData = new FormData();
       formData.append("file", selectedFile);
 
-      const res = await fetch("http://localhost:5000/api/analyze-ai", {
+      const res = await fetch("https://excel-analysis-platform-gou1.onrender.com/api/analyze-ai", {
         method: "POST",
         body: formData,
       });

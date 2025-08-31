@@ -8,7 +8,7 @@ export default function ProtectedRoute({ children, role }) {
   useEffect(() => {
     async function checkAuth() {
       try {
-        const res = await fetch("http://localhost:5000/api/auth/profile", {
+        const res = await fetch("https://excel-analysis-platform-gou1.onrender.com/api/auth/profile", {
           method: "GET",
           credentials: "include", // ✅ send cookie
         });
