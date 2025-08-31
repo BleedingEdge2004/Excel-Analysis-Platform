@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: "https://excel-analysis-platform-git-main-bleedingedge2004s-projects.vercel.app/",
+  origin: "https://excel-analysis-platform-git-main-bleedingedge2004s-projects.vercel.app",
   credentials: true,
 }));
 
