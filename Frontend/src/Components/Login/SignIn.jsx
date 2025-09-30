@@ -18,7 +18,7 @@ export default function SignIn() {
         body: JSON.stringify({ email, password }),
         credentials: "include", // ✅ to send/receive cookies
       });
-
+ 
       const data = await res.json();
 
       if (res.ok) {
