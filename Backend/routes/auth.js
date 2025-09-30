@@ -48,6 +48,8 @@ router.post("/signup", async (req, res) => {
 });
 
 // Signin Route
+console.log("SignIn request body:", req.body);
+
 router.post("/signin", async (req, res) =>
 {
   const { email, password } = req.body;
