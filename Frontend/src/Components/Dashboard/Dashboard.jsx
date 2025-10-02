@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Sidebar from "../Sidebar/Sidebar";
-// import img2 from "../../assets/img2.png";
 import img3 from "../../assets/dash.png";
 import Navbar from "../Navbar/Navbar";
 import "./Dashboard.css";
