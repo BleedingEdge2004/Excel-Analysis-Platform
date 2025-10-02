@@ -6,6 +6,15 @@ A MERN‑stack web application for uploading, analyzing, and visualizing Excel (
 
 ---
 
+## Authors
+
+### --Sachin Kumar Yadav
+### --Omansh Sharma
+### --Perugu Manoj
+### --Hemanth
+
+---
+
 ## Features
 
 - Upload Excel (.xlsx / .xls) or CSV files  
