@@ -1,83 +1,117 @@
-import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
+import "./Login.css";
+import loginImg from "../../assets/login.png";
 
-export default function SignIn() {
+const SignIn = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
-      const res = await fetch("https://excel-analysis-platform-gou1.onrender.com/api/auth/signin", {
+      const res = await fetch("http://localhost:5000/api/auth/signin", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
         body: JSON.stringify({ email, password }),
-        credentials: "include", // ✅ to send/receive cookies
       });
- 
+
       const data = await res.json();
 
-      if (res.ok) {
-        toast.success("Login successful!", {
-          position: "top-right",
-          autoClose: 2000,
-        });
-
-        setTimeout(() => {
-          if (data.role === "admin") {
-            navigate("/admin-dashboard");
-          } else {
-            navigate("/dashboard");
-          }
-        }, 2000);
-      } else {
-        toast.error(data.msg || "Login failed", {
-          position: "top-right",
-          autoClose: 3000,
-        });
+      if (!res.ok) {
+        alert(data.msg || "Login failed");
+        setLoading(false);
+        return;
       }
+
+      // Success
+      navigate("/dashboard");
     } catch (err) {
-      console.error(err);
-      toast.error("Something went wrong", {
-        position: "top-right",
-        autoClose: 3000,
-      });
+      console.error("Login error:", err);
+      alert("Server error");
+      setLoading(false);
     }
   };
 
   return (
     <div className="auth-container">
-      <div className="auth-box">
-        <h1 className="auth-title">Sign In</h1>
-        <form className="auth-form" onSubmit={handleSubmit}>
-          <input
-            type="email"
-            placeholder="Email"
-            className="auth-input"
-            autoComplete="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className="auth-input"
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button type="submit" className="auth-button">Sign In</button>
-          <p className="auth-text">
-            Don’t have an account?{" "}
-            <Link to="/signup" className="auth-link">Sign Up</Link>
+      <div className="auth-card">
+        {/* Left Side Section */}
+        <div className="auth-left">
+          <img src={loginImg} alt="Excel Analyst" className="auth-illustration-img" />
+          <h1 className="auth-left-title">Excel Analysis Hub</h1>
+          <p className="auth-left-subtitle">
+            Unleash the full potential of your spreadsheets with our advanced analysis platform.
           </p>
-        </form>
+          <div className="auth-dots">
+            <span className="dot"></span>
+            <span className="dot active"></span>
+            <span className="dot"></span>
+            <span className="dot"></span>
+          </div>
+        </div>
+
+        {/* Right Side Section */}
+        <div className="auth-right">
+          <div className="auth-brand">
+            <div className="auth-brand-name">
+              EXCEL <span>ANALYST</span>
+            </div>
+          </div>
+
+          <form onSubmit={handleLogin} className="auth-form">
+            <div className="auth-input-group">
+              <label className="auth-label">Username or email</label>
+              <input
+                type="email"
+                placeholder="johnsmith007"
+                className="auth-input"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="auth-input-group">
+              <label className="auth-label">Password</label>
+              <input
+                type="password"
+                placeholder="••••••••••••"
+                className="auth-input"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+
+            <a href="#" className="auth-forgot-link">Forgot password?</a>
+
+            <button type="submit" className="auth-button-primary" disabled={loading}>
+              {loading ? "Signing in..." : "Sign in"}
+            </button>
+
+
+
+
+          </form>
+
+          <p className="auth-footer-text">
+            Are you new?
+            <button className="auth-switch-link" onClick={() => navigate("/signup")}>
+              Create an Account
+            </button>
+          </p>
+        </div>
       </div>
-      <ToastContainer />
     </div>
   );
-}
+};
+
+export default SignIn;

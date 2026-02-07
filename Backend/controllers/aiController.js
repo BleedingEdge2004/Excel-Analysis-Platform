@@ -102,19 +102,24 @@ const summarizeExcelData = (rows) => {
 export const analyzeExcelWithAI = async (req, res) => {
     const file = req.file;
     if (!file) return res.status(400).json({ error: "No file uploaded" });
-
     try {
+        console.log("Starting AI analysis for file:", file.filename);
         // 1) Read Excel (first sheet)
         const workbook = xlsx.readFile(file.path, { cellDates: true });
         const sheetName = workbook.SheetNames[0];
         const sheet = workbook.Sheets[sheetName];
         const jsonData = xlsx.utils.sheet_to_json(sheet, { defval: "" });
+        console.log("Excel parsed, rows:", jsonData.length);
 
         // 2) Summarize compactly
         const summary = summarizeExcelData(jsonData);
+        console.log("Summary generated");
 
         // 3) Ask Groq for insights
-        const insights = await getAIInsights(summary);
+        console.log("Calling Groq API...");
+        const { xAxis, yAxis, chartType } = req.body;
+        const insights = await getAIInsights(summary, xAxis, yAxis, chartType);
+        console.log("Groq insights received");
 
         // 4) Return both (UI can render both)
         return res.json({ summary, insights });
@@ -124,7 +129,9 @@ export const analyzeExcelWithAI = async (req, res) => {
     } finally {
         // Cleanup temp upload
         try {
-            fs.unlink(file.path, () => { });
+            if (file && file.path) {
+                fs.unlink(file.path, () => { });
+            }
         } catch { }
     }
 };

@@ -1,39 +1,46 @@
-import "./config/env.js"
+import "./config/env.js";
 import express from "express";
-import { connect } from "mongoose";
 import cors from "cors";
-import cookieParser from 'cookie-parser';
-import aiRoutes from "./routes/aiRoutes.js";
-import uploadRoute from "./routes/uploadRoute.js";
-import authRoutes from "./routes/auth.js";
-// const uploadRoute = require("./routes/uploadRoute.js");
-// const authRoutes = require("./routes/auth.js");
+import cookieParser from "cookie-parser";
+import { connect } from "mongoose";
 
-// import dotenv from "dotenv";
-// dotenv.config();
+import authRoutes from "./routes/auth.js";
+import uploadRoute from "./routes/uploadRoute.js";
+import aiRoutes from "./routes/aiRoutes.js";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// require("dotenv").config();
-// Middleware
+// ✅ Middleware
 app.use(express.json());
-app.use(cors({
-  origin: "https://excel-analysis-platform-gamma.vercel.app",
-  credentials: true,
-}));
-
 app.use(cookieParser());
-// Routes
+
+// ✅ CORS — IMPORTANT (Vite runs on 5173)
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+// ✅ Test route
+app.get("/api/test", (req, res) => {
+  res.json({ message: "Backend working" });
+});
+
+// ✅ Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/files", uploadRoute);
 app.use("/api", aiRoutes);
 
-// Connect to MongoDB
+// ✅ DB + Server
 connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB connected");
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    app.listen(PORT, () =>
+      console.log(`Server running on port ${PORT}`)
+    );
   })
   .catch((err) => console.error(err));
-

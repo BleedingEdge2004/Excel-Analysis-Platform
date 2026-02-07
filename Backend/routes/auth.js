@@ -36,22 +36,20 @@ router.post("/signup", async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "none",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       maxAge: 24 * 60 * 60 * 1000,
     });
 
     res.json({ role: newUser.role });
   } catch (err) {
-    console.error(err);
+    console.error("Signup error:", err);
     res.status(500).json({ msg: "Server error" });
   }
 });
 
 // Signin Route
-console.log("SignIn request body:", req.body);
-
-router.post("/signin", async (req, res) =>
-{
+router.post("/signin", async (req, res) => {
+  console.log("SignIn request body:", req.body);
   const { email, password } = req.body;
 
   try {
@@ -70,7 +68,7 @@ router.post("/signin", async (req, res) =>
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "none",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       maxAge: 24 * 60 * 60 * 1000,
     });
 
@@ -98,9 +96,10 @@ router.post("/logout", (req, res) => {
   res.clearCookie("token", {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "none",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
   });
   res.json({ msg: "Logged out successfully" });
 });
 
+// Make sure this line is at the very end
 export default router;

@@ -34,9 +34,17 @@
 }
 
 @keyframes shimmer {
-  0% { opacity: 0.6; }
-  50% { opacity: 1; }
-  100% { opacity: 0.6; }
+  0% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
 }
 
 /* Info Section */
@@ -49,7 +57,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .dash-info-text {
@@ -70,15 +78,25 @@
 
 /* Dashboard Image */
 .dash-image {
-  width: 40%;
-  max-width: 300px;
+  width: 20rem;
   animation: float 3s ease-in-out infinite;
+
 }
 
 @keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+    filter: drop-shadow(5px 10px 10px rgba(0, 0, 0, 0.3))
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+
+  100% {
+    transform: translateY(0);
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3))
+  }
 }
 
 /* Upload Section */
@@ -120,7 +138,6 @@
 
 .upload-direction {
   text-align: center;
-  margin-top: 60px;
   margin-bottom: 60px;
 }
 
@@ -139,9 +156,12 @@
 
 /* Simple bounce animation */
 @keyframes bounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(10px);
   }
@@ -150,7 +170,7 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .dash-body{
+  .dash-body {
     padding: 1rem;
   }
 

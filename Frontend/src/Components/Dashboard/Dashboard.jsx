@@ -15,13 +15,15 @@ export default function Dashboard() {
   // NEW: AI state
   const [aiInsights, setAIInsights] = useState("");
   const [loadingAI, setLoadingAI] = useState(false);
+  const [xAxis, setXAxis] = useState("");
+  const [yAxis, setYAxis] = useState("");
 
 
   useEffect(() => {
 
     const fetchUser = async () => {
       try {
-        const res = await fetch("https://excel-analysis-platform-gou1.onrender.com/api/auth/profile", {
+        const res = await fetch("http://localhost:5000/api/auth/profile", {
           method: "GET",
           credentials: "include",
         });
@@ -54,7 +56,7 @@ export default function Dashboard() {
     formData.append("file", selectedFile);
 
     try {
-      const res = await fetch("https://excel-analysis-platform-gou1.onrender.com/api/files/upload", {
+      const res = await fetch("http://localhost:5000/api/files/upload", {
         method: "POST",
         body: formData,
         credentials: "include",
@@ -75,7 +77,7 @@ export default function Dashboard() {
   };
 
   // NEW: Handle AI Insights request
-  const handleGetAIInsights = async () => {
+  const handleGetAIInsights = async (chartType = "graph") => {
     if (!selectedFile) {
       toast.error("Please upload an Excel file first");
       return;
@@ -84,8 +86,11 @@ export default function Dashboard() {
       setLoadingAI(true);
       const formData = new FormData();
       formData.append("file", selectedFile);
+      formData.append("xAxis", xAxis);
+      formData.append("yAxis", yAxis);
+      formData.append("chartType", chartType);
 
-      const res = await fetch("https://excel-analysis-platform-gou1.onrender.com/api/analyze-ai", {
+      const res = await fetch("http://localhost:5000/api/analyze-ai", {
         method: "POST",
         body: formData,
       });
@@ -95,7 +100,7 @@ export default function Dashboard() {
         toast.error(data.error);
       } else {
         setAIInsights(data.insights);
-        toast.success("AI Insights generated successfully");
+        toast.success(`AI Insights for ${chartType} generated successfully`);
       }
       // eslint-disable-next-line no-unused-vars
     } catch (err) {
@@ -140,7 +145,15 @@ export default function Dashboard() {
               <img src={img2} className="dash-upload-icon" alt="Upload Icon" />
               <p className="dash-upload-text">Drag and Drop or Upload</p>
             </div> */}
-            <ExcelVisualizer onFileSelect={setSelectedFile} />
+            <ExcelVisualizer
+              onFileSelect={setSelectedFile}
+              onUpload={handleUpload}
+              onGetAIInsights={handleGetAIInsights}
+              onAxisChange={(x, y) => {
+                setXAxis(x);
+                setYAxis(y);
+              }}
+            />
 
             {/* NEW: AI Insights Section */}
             {aiInsights && (

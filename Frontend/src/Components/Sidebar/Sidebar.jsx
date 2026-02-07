@@ -4,7 +4,7 @@ import "./Sidebar.css";
 
 export default function Sidebar({ isOpen }) {
   return (
-    <div className={`sidebar ${isOpen ? "closed" : "open"}`}>
+    <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
       <nav className="sidebar-menu">
         <Link to="/dashboard" className="sidebar-link">🏠 Dashboard</Link>
         <Link to="/history" className="sidebar-link">📜 History</Link>

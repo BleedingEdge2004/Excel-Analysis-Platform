@@ -5,6 +5,6 @@ const UserSchema = new Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   role: { type: String, enum: ["user", "admin"], default: "user" }, // Add role
-});
+}, { timestamps: true });
 
-export default model("User", UserSchema,"Login");
+export default model("User", UserSchema, "Login");

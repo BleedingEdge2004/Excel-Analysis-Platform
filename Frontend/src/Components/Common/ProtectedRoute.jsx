@@ -8,10 +8,13 @@ export default function ProtectedRoute({ children, role }) {
   useEffect(() => {
     async function checkAuth() {
       try {
-        const res = await fetch("https://excel-analysis-platform-gou1.onrender.com/api/auth/profile", {
-          method: "GET",
-          credentials: "include", // ✅ send cookie
-        });
+        const res = await fetch(
+          "http://localhost:5000/api/auth/profile", // ✅ LOCAL BACKEND
+          {
+            method: "GET",
+            credentials: "include", // send cookie
+          }
+        );
 
         const data = await res.json();
 
@@ -32,7 +35,7 @@ export default function ProtectedRoute({ children, role }) {
 
   if (authStatus === "loading") return <div>Loading...</div>;
 
-  if (authStatus === "unauth") return <Navigate to="/" replace />;
+  if (authStatus === "unauth") return <Navigate to="/login" replace />;
 
   if (role && userRole !== role) {
     return <Navigate to="/dashboard" replace />;

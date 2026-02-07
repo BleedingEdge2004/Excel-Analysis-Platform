@@ -8,8 +8,12 @@
 }
 
 .navbar-title {
-  font-size: 1.4rem;
+  font-size: 0.4rem;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .sidebar-toggle {
@@ -19,11 +23,12 @@
   font-size: 1.4rem;
   cursor: pointer;
 }
+
 .nav-img {
   width: 90px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: start;
+  justify-content: start;
   border-radius: 5px;
 }
 
@@ -78,4 +83,3 @@
     font-size: 1rem;
   }
 }
-

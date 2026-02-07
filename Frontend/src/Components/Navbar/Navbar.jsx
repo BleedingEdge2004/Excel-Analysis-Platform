@@ -10,7 +10,7 @@ export default function Navbar({ onToggleSidebar, isSidebarOpen }) {
 
   const handleLogout = async (reason = "expired") => {
     try {
-      await fetch("https://excel-analysis-platform-gou1.onrender.com/api/auth/logout", {
+      await fetch("http://localhost:5000/api/auth/logout", {
         method: "POST",
         credentials: "include",
       });
@@ -38,7 +38,7 @@ export default function Navbar({ onToggleSidebar, isSidebarOpen }) {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch("https://excel-analysis-platform-gou1.onrender.com/api/auth/profile", {
+        const res = await fetch("http://localhost:5000/api/auth/profile", {
           method: "GET",
           credentials: "include",
         });
@@ -64,10 +64,12 @@ export default function Navbar({ onToggleSidebar, isSidebarOpen }) {
     <>
       <header className="navbar">
         <button className="sidebar-toggle" onClick={onToggleSidebar}>
-          {isSidebarOpen ? "☰" : "✖"}
+          {isSidebarOpen ? "✖" : "☰"}
         </button>
-
-        <h1 className="navbar-title"><img className="nav-img" src={img4} alt=" logo" /></h1>
+        <div className="navbar-title">
+          <h1 className="navbar-img"><img className="nav-img" src={img4} alt=" logo" /></h1>
+          <h2>Excel Analysis Platform</h2>
+        </div>
 
         <div className="user-icon" onClick={toggleProfile}>👤</div>
 
